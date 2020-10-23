@@ -21,10 +21,10 @@ int contains(Point **squid, int length, int x, int y){
 
 char **gengrid(){
 	//malloc the rows
-	char **grid = malloc(GRIDSIZE * sizeof(char));
+	char **grid = malloc(GRIDSIZE * sizeof(char *));
 	for(int i = 0; i < GRIDSIZE; ++i){
 		//for every row, malloc the collumns and initialize this with all spaces
-		grid[i] = malloc(GRIDSIZE * sizeof(char))
+		grid[i] = malloc(GRIDSIZE * sizeof(char));
 		for(int j = 0; j < GRIDSIZE; ++j){
 			grid[i][j] = ' ';
 		}
@@ -36,22 +36,48 @@ char **gengrid(){
 
 //already implemented
 int printOutputOfGame(char **grid){
+	putchar('\n');
 	//print the numbers 1 to F
-	puts("     1     2     3     4     5     6     7     8     9     A     B     C     D     E     F");
-	puts("  |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
+	puts("       1     2     3     4     5     6     7     8     9     A     B     C     D     E     F");
+	puts("    |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
 	for(int i = 0; i < GRIDSIZE; ++i){
-		printf("%d |", i + 1);
+		if(i + 1 < 10){
+			printf("  %d |", i + 1);
+		}
+		else{
+			switch(i + 1){
+				case 10: 
+					printf("  A |");
+					break;
+				case 11:
+					printf("  B |");
+					break;
+				case 12:
+					printf("  C |");
+					break;
+				case 13:
+					printf("  D |");
+					break;
+				case 14:
+					printf("  E |");
+					break;
+				case 15:
+					printf("  F |");
+					break;
+			}
+		}
 		for(int j = 0; j < GRIDSIZE; ++j){
 			printf("  %c  |", grid[i][j]);
 		}
 		putchar('\n');
-		puts("  |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
+		puts("    |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
 	}
+	putchar('\n');
 	return 1;
 }
 
 //already impelmented
-int splooshKaboom(char **grid, Point **squidfour, Point**squidthree, Point*squidtwo, int x, int y){
+int splooshKaboom(char **grid, Point **squidfour, Point **squidthree, Point **squidtwo, int x, int y){
 	if(grid[y][x] != ' '){
 		//we already hit this spot
 		printf("Spot already hit!\n");
@@ -88,7 +114,7 @@ Point **generate4squid(){
 	int x = rand() % GRIDSIZE;
 	int y = rand() % GRIDSIZE;
 	//get direction and check if the direction is correct
-	Point **fourSquid = malloc(SQUIDFOUR * sizeof(Point));
+	Point **fourSquid = malloc(SQUIDFOUR * sizeof(Point *));
 	fourSquid[0] -> x = x;
 	fourSquid[0] -> y = y;
 	return fourSquid;
@@ -102,7 +128,7 @@ Point **generate3squid(Point **fourSquid){
 		y = rand() % GRIDSIZE;		
 	}
 	//get direction from rand and check validity.
-	Point **threeSquid = malloc(SQUIDTHREE * sizeof(Point));
+	Point **threeSquid = malloc(SQUIDTHREE * sizeof(Point *));
 	threeSquid[0] -> x = x;
 	threeSquid[0] -> y = y;
 	return threeSquid;
@@ -116,7 +142,7 @@ Point **generate2squid(Point **fourSquid, Point **threeSquid){
 		y = rand() % GRIDSIZE;		
 	}
 	//get direction from rand and check validity. Use goto statements and labels to save on syntax.
-	Point **twoSquid = malloc(SQUIDTWO * sizeof(Point));
+	Point **twoSquid = malloc(SQUIDTWO * sizeof(Point *));
 	twoSquid[0] -> x = x;
 	twoSquid[0] -> y = y;
 	return twoSquid;	

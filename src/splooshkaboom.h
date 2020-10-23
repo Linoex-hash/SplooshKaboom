@@ -74,7 +74,7 @@ F |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  
 int printOutputOfGame(char **grid);
 /* takes a grid and plays one instance of sploosh kaboom. 
 Return 0 if the player shoots off the grid or a location already marked and KABOOM or SPLOOSH on successful attempt */
-int splooshKaboom(char **grid, Point **squidfour, Point**squidthree, Point*squidtwo, int x, int y);
+int splooshKaboom(char **grid, Point **squidfour, Point **squidthree, Point **squidtwo, int x, int y);
 /* prints the answer of the grid upon losing */
 int printAnswerOfGame(char **grid, Point **fourSquid, Point **threeSquid, Point **twoSquid);
 /* generates a squid of 4 length */
