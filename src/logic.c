@@ -198,16 +198,28 @@ Point **generate3squid(Point **fourSquid){
 	threeSquid[0] -> x = x;
 	threeSquid[0] -> y = y;
 
+
 	return threeSquid;
 }
 //needs to be implemented
 Point **generate2squid(Point **fourSquid, Point **threeSquid){
 	int x = rand() % GRIDSIZE;
 	int y = rand() % GRIDSIZE;
-	while(contains(fourSquid,SQUIDFOUR,x,y) || contains(threeSquid,SQUIDTHREE,x,y)){
+	//x and y is a corner and forSquid and 3 Squid contain points 
+	int top_left_invalid = (x == 0 && y == 0 && (contains(fourSquid, SQUIDFOUR, x + 1, y) || contains(threeSquid, SQUIDTHREE, x + 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y + 1) || contains(threeSquid, SQUIDTHREE, x, y  + 1)));
+	int bottom_left_invalid = (x == 0 && y == GRIDSIZE - 1 && (contains(fourSquid, SQUIDFOUR, x + 1, y) || contains(threeSquid, SQUIDTHREE, x + 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y - 1) || contains(threeSquid, SQUIDTHREE, x, y - 1)));
+	int top_right_invalid = (x == GRIDSIZE - 1 && y == 0 && (contains(fourSquid, SQUIDFOUR, x - 1, y) || contains(threeSquid, SQUIDTHREE, x - 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y + 1) || contains(threeSquid, SQUIDTHREE, x, y + 1)));
+	int bottom_right_invalid = (x == GRIDSIZE - 1 && y == GRIDSIZE - 1 && (contains(fourSquid, SQUIDFOUR, x - 1, y) || contains(threeSquid, SQUIDTHREE, x - 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y - 1) || contains(threeSquid, SQUIDTHREE, x, y - 1)));
+	while(contains(fourSquid,SQUIDFOUR,x,y) || contains(threeSquid,SQUIDTHREE,x,y) || top_right_invalid || top_left_invalid || bottom_right_invalid || bottom_left_invalid){
 		x = rand() % GRIDSIZE;
-		y = rand() % GRIDSIZE;		
+		y = rand() % GRIDSIZE;
+		top_left_invalid = (x == 0 && y == 0 && (contains(fourSquid, SQUIDFOUR, x + 1, y) || contains(threeSquid, SQUIDTHREE, x + 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y + 1) || contains(threeSquid, SQUIDTHREE, x, y  + 1)));
+		bottom_left_invalid = (x == 0 && y == GRIDSIZE - 1 && (contains(fourSquid, SQUIDFOUR, x + 1, y) || contains(threeSquid, SQUIDTHREE, x + 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y - 1) || contains(threeSquid, SQUIDTHREE, x, y - 1)));
+		top_right_invalid = (x == GRIDSIZE - 1 && y == 0 && (contains(fourSquid, SQUIDFOUR, x - 1, y) || contains(threeSquid, SQUIDTHREE, x - 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y + 1) || contains(threeSquid, SQUIDTHREE, x, y + 1)));
+		bottom_right_invalid = (x == GRIDSIZE - 1 && y == GRIDSIZE - 1 && (contains(fourSquid, SQUIDFOUR, x - 1, y) || contains(threeSquid, SQUIDTHREE, x - 1, y)) && (contains(fourSquid, SQUIDFOUR, x, y - 1) || contains(threeSquid, SQUIDTHREE, x, y - 1)));
+
 	}
+
 	//get direction from rand and check validity. Use goto statements and labels to save on syntax.
 	Point **twoSquid = malloc(SQUIDTWO * sizeof(Point *));
 	twoSquid[0] -> x = x;
