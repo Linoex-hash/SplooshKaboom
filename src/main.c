@@ -39,8 +39,8 @@ int main(int argc, char const *argv[]) {
 	for(int i = 0; i < ATTEMPTS && hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO; ++i){
 		printOutputOfGame(grid);
 		if(i <= 0){
-			printf("chosen x: not chosen yet");
-			printf("chosen y: not chosen yet");
+			printf("chosen x: not chosen yet\n");
+			printf("chosen y: not chosen yet\n");
 		}
 		else{
 			printf("chosen x: %d\n", currentX);
@@ -92,9 +92,9 @@ int main(int argc, char const *argv[]) {
 		}
 		while((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE){
 			//invalid input
-			puts("coordinate x not valid. Please try again");
+			puts("coordinate y not valid. Please try again");
 			//reset the character array
-			printf("Please enter x coordinate or press q to quit: ");
+			printf("Please enter y coordinate or press q to quit: ");
 			resetCharacterArray(inputY, 20);
 			scanf("%s", inputY);
 			if(strlen(inputY) == 1 && inputY[0] == 'q'){
@@ -106,7 +106,9 @@ int main(int argc, char const *argv[]) {
 		while((instanceOutput = splooshKaboom(grid, fourSquid, threeSquid, twoSquid, currentX - 1, currentY - 1)) == 0){
 			printf("Please enter x coordinate or press q to quit: ");
 			//reset the character array
-			resetCharacterArray(inputX, 20);			
+			resetCharacterArray(inputX, 20);
+			//scan the input
+			scanf("%s", inputX);			
 			if(strlen(inputX) == 1 && inputX[0] == 'q'){
 				//if input is q, then quit
 				puts("quitting...");
@@ -138,9 +140,9 @@ int main(int argc, char const *argv[]) {
 			}
 			while((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE){
 				//invalid input
-				puts("coordinate x not valid. Please try again");
+				puts("coordinate y not valid. Please try again");
 				//reset the character array
-				printf("Please enter x coordinate or press q to quit: ");
+				printf("Please enter y coordinate or press q to quit: ");
 				resetCharacterArray(inputY, 20);
 				scanf("%s", inputY);
 				if(strlen(inputY) == 1 && inputY[0] == 'q'){
