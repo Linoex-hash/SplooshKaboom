@@ -131,7 +131,7 @@ Point **generate4squid(){
 			}
 		}
 		else{
-			directon = RIGHT;
+			direction = RIGHT;
 			goto R;
 		}
 	}
@@ -145,7 +145,7 @@ Point **generate4squid(){
 			}
 		}
 		else{
-			directon = DOWN;
+			direction = DOWN;
 			goto D;
 		}
 	}
@@ -160,7 +160,7 @@ Point **generate4squid(){
 			}
 		}
 		else{
-			directon = LEFT;
+			direction = LEFT;
 			goto L;
 		}
 	}
@@ -175,7 +175,7 @@ Point **generate4squid(){
 			}
 		}
 		else{
-			directon = UP;
+			direction = UP;
 			goto U;
 		}
 	}
