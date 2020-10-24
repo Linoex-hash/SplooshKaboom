@@ -38,13 +38,13 @@ int isvalidPoint(int x);
 
 /* takes a grid and prints the output of that grid. O for faliure, any other number for success */
 /* format should be exactly this: */
-/*   1     2     3     4     5     6     7     8     9     A     B     C     D     E     F
+/*   1     2     3     4     5     6     7     8     9     A     B     C     D     E     F              Shots:
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-1 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
+1 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |         X X X X X X
+  |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|         
+2 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |         X X X X X X
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-2 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
-  |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-3 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
+3 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |         X X X X X X
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 4 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -71,7 +71,7 @@ E |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  
 F |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----| */
 
-int printOutputOfGame(char **grid);
+int printOutputOfGame(char **grid, int numberofAttempts);
 /* takes a grid and plays one instance of sploosh kaboom. 
 Return 0 if the player shoots off the grid or a location already marked and KABOOM or SPLOOSH on successful attempt */
 int splooshKaboom(char **grid, Point **squidfour, Point **squidthree, Point **squidtwo, int x, int y);

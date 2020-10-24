@@ -35,9 +35,10 @@ int main(int argc, char const *argv[]) {
 	int currentY = 0;
 	char inputY[20];
 	int hits = 0;
+	int i = 0;
 
-	for(int i = 0; i < ATTEMPTS && hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO; ++i){
-		printOutputOfGame(grid);
+	for(; i < ATTEMPTS && hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO; ++i){
+		printOutputOfGame(grid, ATTEMPTS - i);
 		if(i <= 0){
 			printf("chosen x: not chosen yet\n");
 			printf("chosen y: not chosen yet\n");
@@ -164,7 +165,7 @@ int main(int argc, char const *argv[]) {
 	}
 	//WON
 	else{
-		printOutputOfGame(grid);
+		printOutputOfGame(grid, ATTEMPTS - i);
 		printf("You won the game! congradulations!\n");
 	}
 

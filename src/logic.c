@@ -43,42 +43,50 @@ char **gengrid(){
 /* header functions. Functionality described in header file sploohskaboom.h. Any provided implementaiton may be wrong */
 
 //already implemented
-int printOutputOfGame(char **grid){
+int printOutputOfGame(char **grid, int attemptsLeft){
 	putchar('\n');
 	//print the numbers 1 to F
-	puts("       1     2     3     4     5     6     7     8     9     A     B     C     D     E     F");
-	puts("    |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
+	printf("        1     2     3     4     5     6     7     8     9    10    11    12    13    14    15             Shots: %d\n", attemptsLeft);
+	puts("     |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
 	for(int i = 0; i < GRIDSIZE; ++i){
 		if(i + 1 < 10){
-			printf("  %d |", i + 1);
+			printf("  %d  |", i + 1);
 		}
 		else{
 			switch(i + 1){
 				case 10: 
-					printf("  A |");
+					printf("  10 |");
 					break;
 				case 11:
-					printf("  B |");
+					printf("  11 |");
 					break;
 				case 12:
-					printf("  C |");
+					printf("  12 |");
 					break;
 				case 13:
-					printf("  D |");
+					printf("  13 |");
 					break;
 				case 14:
-					printf("  E |");
+					printf("  14 |");
 					break;
 				case 15:
-					printf("  F |");
+					printf("  15 |");
 					break;
 			}
 		}
 		for(int j = 0; j < GRIDSIZE; ++j){
 			printf("  %c  |", grid[i][j]);
 		}
+		//print the number of spaces
+		printf("          ");
+		//print the number of shots
+		for(int k = 0; k < attemptsLeft && k < 5; ++k){
+			printf("X ");
+		}
+		//update the number of attempts to be -= 5
+		attemptsLeft -= 5;
 		putchar('\n');
-		puts("    |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
+		puts("     |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
 	}
 	putchar('\n');
 	return 1;
@@ -115,7 +123,7 @@ int printAnswerOfGame(char **grid, Point **fourSquid, Point **threeSquid, Point 
 		//might change this to a special answer character
 		grid[twoSquid[i] -> y][twoSquid[i] -> x] = KABOOM;
 	}
-	return printOutputOfGame(grid);
+	return printOutputOfGame(grid, 0);
 }
 //needs to be implemented
 Point **generate4squid(){
