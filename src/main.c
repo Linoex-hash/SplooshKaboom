@@ -65,7 +65,8 @@ int main(int argc, char const *argv[]) {
 		scanf("%s", inputX);
 		if(strlen(inputX) == 1 && inputX[0] == 'q'){
 			//if input is q, then quit
-			puts("  quitting...");
+			puts("  quitting... done. Here are the squid locations for this game: ");
+			printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 			return 0;
 		}
 		while((currentX = atoi(inputX)) < 1 || currentX > GRIDSIZE){
@@ -77,7 +78,8 @@ int main(int argc, char const *argv[]) {
 			scanf("%s", inputX);
 			if(strlen(inputX) == 1 && inputX[0] == 'q'){
 				//if input is q, then quit
-				puts("  quitting...");
+				puts("  quitting... done. Here are the squid locations for this game: ");
+				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
 		}
@@ -88,7 +90,8 @@ int main(int argc, char const *argv[]) {
 		scanf("%s", inputY);
 		if(strlen(inputY) == 1 && inputY[0] == 'q'){
 			//if input is q, then quit
-			puts("  quitting...");
+			puts("  quitting... done. Here are the squid locations for this game: ");
+			printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 			return 0;
 		}
 		while((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE){
@@ -100,7 +103,8 @@ int main(int argc, char const *argv[]) {
 			scanf("%s", inputY);
 			if(strlen(inputY) == 1 && inputY[0] == 'q'){
 				//if input is q, then quit
-				puts("  quitting...");
+				puts("  quitting... done. Here are the squid locations for this game: ");
+				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
 		}
@@ -112,7 +116,8 @@ int main(int argc, char const *argv[]) {
 			scanf("%s", inputX);			
 			if(strlen(inputX) == 1 && inputX[0] == 'q'){
 				//if input is q, then quit
-				puts("  quitting...");
+				puts("  quitting... done. Here are the squid locations for this game: ");
+				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
 			while((currentX = atoi(inputX)) < 1 || currentX > GRIDSIZE){
@@ -124,7 +129,8 @@ int main(int argc, char const *argv[]) {
 				scanf("%s", inputX);
 				if(strlen(inputX) == 1 && inputX[0] == 'q'){
 					//if input is q, then quit
-					puts("  quitting...");
+					puts("  quitting... done. Here are the squid locations for this game: ");
+					printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 					return 0;
 				}
 			}
@@ -136,7 +142,8 @@ int main(int argc, char const *argv[]) {
 			scanf("%s", inputY);
 			if(strlen(inputY) == 1 && inputY[0] == 'q'){
 				//if input is q, then quit
-				puts("  quitting...");
+				puts("  quitting... done. Here are the squid locations for this game: ");
+				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
 			while((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE){
@@ -148,7 +155,8 @@ int main(int argc, char const *argv[]) {
 				scanf("%s", inputY);
 				if(strlen(inputY) == 1 && inputY[0] == 'q'){
 					//if input is q, then quit
-					puts("  quitting...");
+					puts("  quitting... done. Here are the squid locations for this game: ");
+					printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 					return 0;
 				}
 			}
