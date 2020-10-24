@@ -113,8 +113,12 @@ int printAnswerOfGame(char **grid, Point **fourSquid, Point **threeSquid, Point 
 Point **generate4squid(){
 	int x = rand() % GRIDSIZE;
 	int y = rand() % GRIDSIZE;
+	//malloc the squid
 	Point **fourSquid = malloc(SQUIDFOUR * sizeof(Point *));
-
+	for(int i = 0; i < SQUIDFOUR; ++i){
+		//malloc the point
+		fourSquid[i] = malloc(sizeof(Point));
+	}
 	fourSquid[0] -> x = x;
 	fourSquid[0] -> y = y;
 	//get direction and check if the direction is correct
