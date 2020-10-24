@@ -113,10 +113,72 @@ int printAnswerOfGame(char **grid, Point **fourSquid, Point **threeSquid, Point 
 Point **generate4squid(){
 	int x = rand() % GRIDSIZE;
 	int y = rand() % GRIDSIZE;
-	//get direction and check if the direction is correct
 	Point **fourSquid = malloc(SQUIDFOUR * sizeof(Point *));
+
 	fourSquid[0] -> x = x;
 	fourSquid[0] -> y = y;
+	//get direction and check if the direction is correct
+	//There are 4 directions. UP DOWN LEFT RIGHT. Start with generating a random direction UP DOWN LEFT RIGHT
+	int direction = rand() % 4;
+	U: if(direction == UP){
+		// in the case that y = 3, this is a valid starting point; index 2 1 and 0 would all be valid for the squid
+		//needs to be at least 3 points from the top
+		if(isvalidPoint(fourSquid[0] -> y - SQUIDFOUR + 1)){
+			for(int i = 1; i < SQUIDFOUR; ++i){
+				//y - 1, y - 2, y - 3
+				fourSquid[i] -> x = fourSquid[0] -> x;
+				fourSquid[i] -> y = fourSquid[0] -> y - i;
+			}
+		}
+		else{
+			directon = RIGHT;
+			goto R;
+		}
+	}
+	R: if(direction == RIGHT){
+		//needs to be at least 3 points from the right
+		if(isvalidPoint(fourSquid[0] -> x + SQUIDFOUR - 1)){
+			for(int i = 1; i < SQUIDFOUR; ++i){
+				//x + 1, x + 2, x + 3
+				fourSquid[i] -> x = fourSquid[0] -> x + i;
+				fourSquid[i] -> y = fourSquid[0] -> y;
+			}
+		}
+		else{
+			directon = DOWN;
+			goto D;
+		}
+	}
+
+	D: if(direction == DOWN){
+		//needs to be at least 3 points from the bottom
+		if(isvalidPoint(fourSquid[0] -> y + SQUIDFOUR - 1)){
+			for(int i = 1; i < SQUIDFOUR; ++i){
+				//y + 1, y + 2, y + 3
+				fourSquid[i] -> x = fourSquid[0] -> x;
+				fourSquid[i] -> y = fourSquid[0] -> y + i;
+			}
+		}
+		else{
+			directon = LEFT;
+			goto L;
+		}
+	}
+
+	L: if(direction == LEFT){
+		//needs to be at least 3 points from the bottom
+		if(isvalidPoint(fourSquid[0] -> x - SQUIDFOUR + 1)){
+			for(int i = 1; i < SQUIDFOUR; ++i){
+				//x - 1, x - 2, x - 3
+				fourSquid[i] -> x = fourSquid[0] -> x - i;
+				fourSquid[i] -> y = fourSquid[0] -> y;
+			}
+		}
+		else{
+			directon = UP;
+			goto U;
+		}
+	}
 	return fourSquid;
 }
 //needs to be implemented
@@ -131,6 +193,7 @@ Point **generate3squid(Point **fourSquid){
 	Point **threeSquid = malloc(SQUIDTHREE * sizeof(Point *));
 	threeSquid[0] -> x = x;
 	threeSquid[0] -> y = y;
+
 	return threeSquid;
 }
 //needs to be implemented
