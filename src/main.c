@@ -1,3 +1,13 @@
+/* This is sploosh kaboom. It's a mini game from the Legend of Zelda: The Wind Waker. The goal of this game is to
+shoot a 15 X 15 grid and hope you hit all the squids.
+
+This is an open source project.
+
+Creditors: 
+Chandra Neppalli
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "splooshkaboom.h"
