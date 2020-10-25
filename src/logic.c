@@ -46,34 +46,10 @@ char **gengrid(){
 int printOutputOfGame(char **grid, int attemptsLeft){
 	putchar('\n');
 	//print the numbers 1 to F
-	printf("        1     2     3     4     5     6     7     8     9    10    11    12    13    14    15             Shots: %d\n", attemptsLeft);
-	puts("     |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
+	printf("        1     2     3     4     5     6     7     8     9             Shots: %d\n", attemptsLeft);
+	puts("     |-----|-----|-----|-----|-----|-----|-----|-----|-----|");
 	for(int i = 0; i < GRIDSIZE; ++i){
-		if(i + 1 < 10){
-			printf("  %d  |", i + 1);
-		}
-		else{
-			switch(i + 1){
-				case 10: 
-					printf("  10 |");
-					break;
-				case 11:
-					printf("  11 |");
-					break;
-				case 12:
-					printf("  12 |");
-					break;
-				case 13:
-					printf("  13 |");
-					break;
-				case 14:
-					printf("  14 |");
-					break;
-				case 15:
-					printf("  15 |");
-					break;
-			}
-		}
+		printf("  %d  |", i + 1);
 		for(int j = 0; j < GRIDSIZE; ++j){
 			printf("  %c  |", grid[i][j]);
 		}
@@ -86,7 +62,7 @@ int printOutputOfGame(char **grid, int attemptsLeft){
 		//update the number of attempts to be -= 5
 		attemptsLeft -= 5;
 		putchar('\n');
-		puts("     |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|");
+		puts("     |-----|-----|-----|-----|-----|-----|-----|-----|-----|");
 	}
 	putchar('\n');
 	return 1;
