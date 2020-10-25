@@ -1,5 +1,5 @@
 /* This is sploosh kaboom. It's a mini game from the Legend of Zelda: The Wind Waker. The goal of this game is to
-shoot a 15 X 15 grid and hope you hit all the squids.
+shoot a 9 X 9 grid and hope you hit all the squids.
 
 This is an open source project.
 
