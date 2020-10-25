@@ -2,7 +2,7 @@ CC := gcc
 CFLAGS := -g -Wall -Werror
 
 #we only need to make the executable
-all:  splooshkaboom
+all:  splooshkaboom run
 
 #make it from these files
 
@@ -14,6 +14,9 @@ splooshkaboom: src/main.o src/logic.o
 src/%.o: src/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+#run the file
+run: 
+	./splooshkaboom
 
 #clean everything
 
