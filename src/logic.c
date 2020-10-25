@@ -96,7 +96,7 @@ int printOutputOfGame(char **grid, int attemptsLeft){
 int splooshKaboom(char **grid, Point **squidfour, Point **squidthree, Point **squidtwo, int x, int y){
 	if(grid[y][x] != ' '){
 		//we already hit this spot
-		printf("Spot already hit!\n");
+		printf("  Spot already hit!\n");
 		return 0;
 	}
 	else if(contains(squidfour,SQUIDFOUR,x,y) || contains(squidthree,SQUIDTHREE,x,y) || contains(squidtwo,SQUIDTWO,x,y)){
