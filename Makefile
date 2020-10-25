@@ -1,6 +1,5 @@
 CC := gcc
 CFLAGS := -g -Wall -Werror
-LDFLAGS := -lncurses
 
 #we only need to make the executable
 all:  splooshkaboom
@@ -8,7 +7,7 @@ all:  splooshkaboom
 #make it from these files
 
 splooshkaboom: src/main.o src/logic.o
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $@ $^ 
 	
 
 #pattern match all .o files
