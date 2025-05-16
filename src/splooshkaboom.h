@@ -22,12 +22,12 @@
 #define LEFT 3
 #define RIGHT 4
 
-
 /* define the struct points */
 
-typedef struct Point{
-	int x; /* x coordinate */
-	int y; /* y coordinate */
+typedef struct Point
+{
+  int x; /* x coordinate */
+  int y; /* y coordinate */
 } Point;
 
 /* define the functions */
@@ -36,12 +36,12 @@ char **gengrid();
 /* integer validator for coordinates */
 int isvalidPoint(int x);
 
-/* takes a grid and prints the output of that grid. O for faliure, any other number for success */
+/* takes a grid and prints the output of that grid. O for failure, any other number for success */
 /* format should be exactly this: */
 /*   1     2     3     4     5     6     7     8     9            Shots:
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|
 1 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |         X X X X X X
-  |-----|-----|-----|-----|-----|-----|-----|-----|-----|         
+  |-----|-----|-----|-----|-----|-----|-----|-----|-----|
 2 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |         X X X X X X
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|
 3 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |         X X X X X X
@@ -54,14 +54,14 @@ int isvalidPoint(int x);
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|
 7 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|
-8 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |   
+8 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|
 9 |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |  C  |
   |-----|-----|-----|-----|-----|-----|-----|-----|-----|
  */
 
 int printOutputOfGame(char **grid, int numberofAttempts);
-/* takes a grid and plays one instance of sploosh kaboom. 
+/* takes a grid and plays one instance of sploosh kaboom.
 Return 0 if the player shoots off the grid or a location already marked and KABOOM or SPLOOSH on successful attempt */
 int splooshKaboom(char **grid, Point **squidfour, Point **squidthree, Point **squidtwo, int x, int y);
 /* prints the answer of the grid upon losing */

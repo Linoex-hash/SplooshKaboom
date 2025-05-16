@@ -3,7 +3,7 @@ shoot a 9 X 9 grid and hope you hit all the squids.
 
 This is an open source project.
 
-Creditors: 
+Creditors:
 Chandra Neppalli
 
 */
@@ -15,20 +15,23 @@ Chandra Neppalli
 #include <time.h>
 
 /* takes in character array and length and sets all characters to \0 */
-void resetCharacterArray(char a[], int length){
-	for(int i = 0; i < length; ++i){
+void resetCharacterArray(char a[], int length)
+{
+	for (int i = 0; i < length; ++i)
+	{
 		a[i] = '\0';
 	}
 }
-int main(int argc, char const *argv[]) {
+int main(int argc, char const *argv[])
+{
 	srand(time(0));
 	printf("  Welcome to sploosh kaboom.\n  This game is based off of Legend of Zelda: The Wind Waker.\n  The rules are to shoot at the grid until all the squids are found. Enjoy!\n");
 
 	char **grid = gengrid();
 	Point **fourSquid = generate4squid();
 	Point **threeSquid = generate3squid(fourSquid);
-	Point **twoSquid = generate2squid(fourSquid,threeSquid);
-	//this is going to either equal sploosh or kaboom.
+	Point **twoSquid = generate2squid(fourSquid, threeSquid);
+	// this is going to either equal sploosh or kaboom.
 	int instanceOutput = 0;
 	int currentX = 0;
 	char inputX[20];
@@ -37,98 +40,112 @@ int main(int argc, char const *argv[]) {
 	int hits = 0;
 	int i = 0;
 
-	for(; i < ATTEMPTS && hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO; ++i){
+	for (; i < ATTEMPTS && hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO; ++i)
+	{
 		printOutputOfGame(grid, ATTEMPTS - i);
-		if(i <= 0){
+		if (i <= 0)
+		{
 			printf("  chosen x: not chosen yet\n");
 			printf("  chosen y: not chosen yet\n");
 		}
-		else{
+		else
+		{
 			printf("  chosen x: %d\n", currentX);
 			printf("  chosen y: %d\n", currentY);
 		}
-		switch (instanceOutput){
-			case KABOOM: 
-				printf("  KABOOM!\n");
-				break;
-			case SPLOOSH:
-				printf("  SPLOOSH\n");
-				break;
-			default: 
-				//don't do anything
-				break;
+		switch (instanceOutput)
+		{
+		case KABOOM:
+			printf("  KABOOM!\n");
+			break;
+		case SPLOOSH:
+			printf("  SPLOOSH\n");
+			break;
+		default:
+			// don't do anything
+			break;
 		}
 		printf("  Please enter x coordinate or press q to quit: ");
-		//reset the character array
+		// reset the character array
 		resetCharacterArray(inputX, 20);
-		//invalid inputs aren't numbers, are less than or equal to 0 (1 - GRIDSIZE), or greater than GRIDSIZE
+		// invalid inputs aren't numbers, are less than or equal to 0 (1 - GRIDSIZE), or greater than GRIDSIZE
 		scanf("%s", inputX);
-		if(strlen(inputX) == 1 && inputX[0] == 'q'){
-			//if input is q, then quit
+		if (strlen(inputX) == 1 && inputX[0] == 'q')
+		{
+			// if input is q, then quit
 			puts("  quitting... done. Here are the squid locations for this game: ");
 			printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 			return 0;
 		}
-		while((currentX = atoi(inputX)) < 1 || currentX > GRIDSIZE){
-			//invalid input
+		while ((currentX = atoi(inputX)) < 1 || currentX > GRIDSIZE)
+		{
+			// invalid input
 			puts("  coordinate x not valid. Please try again");
-			//reset the character array
+			// reset the character array
 			resetCharacterArray(inputX, 20);
 			printf("  Please enter x coordinate or press q to quit: ");
 			scanf("%s", inputX);
-			if(strlen(inputX) == 1 && inputX[0] == 'q'){
-				//if input is q, then quit
+			if (strlen(inputX) == 1 && inputX[0] == 'q')
+			{
+				// if input is q, then quit
 				puts("  quitting... done. Here are the squid locations for this game: ");
 				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
 		}
 		printf("  Please enter y coordinate or press q to quit: ");
-		//while this input isn't a valid number. If q is entered, return 0 and stop the game
+		// while this input isn't a valid number. If q is entered, return 0 and stop the game
 		resetCharacterArray(inputY, 20);
-		//invalid inputs aren't numbers, are less than or equal to 0 (1 - GRIDSIZE), or greater than GRIDSIZE
+		// invalid inputs aren't numbers, are less than or equal to 0 (1 - GRIDSIZE), or greater than GRIDSIZE
 		scanf("%s", inputY);
-		if(strlen(inputY) == 1 && inputY[0] == 'q'){
-			//if input is q, then quit
+		if (strlen(inputY) == 1 && inputY[0] == 'q')
+		{
+			// if input is q, then quit
 			puts("  quitting... done. Here are the squid locations for this game: ");
 			printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 			return 0;
 		}
-		while((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE){
-			//invalid input
+		while ((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE)
+		{
+			// invalid input
 			puts("  coordinate y not valid. Please try again");
-			//reset the character array
+			// reset the character array
 			printf("  Please enter y coordinate or press q to quit: ");
 			resetCharacterArray(inputY, 20);
 			scanf("%s", inputY);
-			if(strlen(inputY) == 1 && inputY[0] == 'q'){
-				//if input is q, then quit
+			if (strlen(inputY) == 1 && inputY[0] == 'q')
+			{
+				// if input is q, then quit
 				puts("  quitting... done. Here are the squid locations for this game: ");
 				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
 		}
-		while((instanceOutput = splooshKaboom(grid, fourSquid, threeSquid, twoSquid, currentX - 1, currentY - 1)) == 0){
+		while ((instanceOutput = splooshKaboom(grid, fourSquid, threeSquid, twoSquid, currentX - 1, currentY - 1)) == 0)
+		{
 			printf("  Please enter x coordinate or press q to quit: ");
-			//reset the character array
+			// reset the character array
 			resetCharacterArray(inputX, 20);
-			//scan the input
-			scanf("%s", inputX);			
-			if(strlen(inputX) == 1 && inputX[0] == 'q'){
-				//if input is q, then quit
+			// scan the input
+			scanf("%s", inputX);
+			if (strlen(inputX) == 1 && inputX[0] == 'q')
+			{
+				// if input is q, then quit
 				puts("  quitting... done. Here are the squid locations for this game: ");
 				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
-			while((currentX = atoi(inputX)) < 1 || currentX > GRIDSIZE){
-				//invalid input
+			while ((currentX = atoi(inputX)) < 1 || currentX > GRIDSIZE)
+			{
+				// invalid input
 				puts("  coordinate x not valid. Please try again");
-				//reset the character array
+				// reset the character array
 				resetCharacterArray(inputX, 20);
 				printf("  Please enter x coordinate or press q to quit: ");
 				scanf("%s", inputX);
-				if(strlen(inputX) == 1 && inputX[0] == 'q'){
-					//if input is q, then quit
+				if (strlen(inputX) == 1 && inputX[0] == 'q')
+				{
+					// if input is q, then quit
 					puts("  quitting... done. Here are the squid locations for this game: ");
 					printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 					return 0;
@@ -136,47 +153,53 @@ int main(int argc, char const *argv[]) {
 			}
 
 			printf("  Please enter y coordinate or press q to quit: ");
-			//while this input isn't a valid number. If q is entered, return 0 and stop the game
+			// while this input isn't a valid number. If q is entered, return 0 and stop the game
 			resetCharacterArray(inputY, 20);
-			//invalid inputs aren't numbers, are less than or equal to 0 (1 - GRIDSIZE), or greater than GRIDSIZE
+			// invalid inputs aren't numbers, are less than or equal to 0 (1 - GRIDSIZE), or greater than GRIDSIZE
 			scanf("%s", inputY);
-			if(strlen(inputY) == 1 && inputY[0] == 'q'){
-				//if input is q, then quit
+			if (strlen(inputY) == 1 && inputY[0] == 'q')
+			{
+				// if input is q, then quit
 				puts("  quitting... done. Here are the squid locations for this game: ");
 				printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 				return 0;
 			}
-			while((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE){
-				//invalid input
+			while ((currentY = atoi(inputY)) < 1 || currentY > GRIDSIZE)
+			{
+				// invalid input
 				puts("  coordinate y not valid. Please try again");
-				//reset the character array
+				// reset the character array
 				printf("  Please enter y coordinate or press q to quit: ");
 				resetCharacterArray(inputY, 20);
 				scanf("%s", inputY);
-				if(strlen(inputY) == 1 && inputY[0] == 'q'){
-					//if input is q, then quit
+				if (strlen(inputY) == 1 && inputY[0] == 'q')
+				{
+					// if input is q, then quit
 					puts("  quitting... done. Here are the squid locations for this game: ");
 					printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 					return 0;
 				}
 			}
 		}
-		if(instanceOutput == KABOOM){
+		if (instanceOutput == KABOOM)
+		{
 			++hits;
 		}
-		//clear the terminal
+		// clear the terminal
+		system("clear");
 	}
-	//LOST
-	if(hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO){
-		printAnswerOfGame(grid,fourSquid,threeSquid,twoSquid);
+	// LOST
+	if (hits < SQUIDFOUR + SQUIDTHREE + SQUIDTWO)
+	{
+		printAnswerOfGame(grid, fourSquid, threeSquid, twoSquid);
 		printf("  You lost the game. Please restart application to try again.\n");
 	}
-	//WON
-	else{
+	// WON
+	else
+	{
 		printOutputOfGame(grid, ATTEMPTS - i);
 		printf("  You won the game! congradulations!\n");
 	}
-
 
 	return 0;
 }
